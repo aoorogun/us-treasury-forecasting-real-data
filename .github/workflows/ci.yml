@@ -1,0 +1,30 @@
+name: CI
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11", cache: pip}
+      - run: pip install -e ".[dev]"
+      - run: ruff check src tests scripts sagemaker
+      - run: python -m unittest discover -s tests -v
+      - run: |
+          treasury-forecast train
+          treasury-forecast evaluate
+          treasury-forecast scenario --file configs/scenario_rate_shock.json
+          treasury-forecast monitor
+      - uses: actions/upload-artifact@v4
+        with:
+          name: verified-evaluation
+          path: |
+            artifacts/metadata.json
+            reports/holdout_predictions.csv
+            reports/scenario_result.json
+            reports/drift_report.json

@@ -1,0 +1,15 @@
+{
+  "scenario_id": "SCN-2024-RATES-100BP",
+  "name": "Parallel rate sell-off with higher volatility",
+  "status": "proposed",
+  "as_of": "2024-12-31",
+  "shocks": {
+    "treasury_3m": {"operation": "add", "value": 1.0},
+    "treasury_2y": {"operation": "add", "value": 1.0},
+    "treasury_10y": {"operation": "add", "value": 1.0},
+    "treasury_30y": {"operation": "add", "value": 1.0},
+    "fed_funds": {"operation": "add", "value": 0.75},
+    "vix": {"operation": "multiply", "value": 1.25}
+  }
+}
+

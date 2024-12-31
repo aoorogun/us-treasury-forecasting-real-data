@@ -1,0 +1,17 @@
+{
+  "status": "critical",
+  "maximum_psi": 8.125932587352903,
+  "feature_psi": {
+    "treasury_3m": 6.86043923043038,
+    "treasury_2y": 3.710695223152609,
+    "treasury_10y": 6.464686029878754,
+    "treasury_30y": 8.087278745451432,
+    "fed_funds": 6.182290178482359,
+    "real_yield_10y": 8.125932587352903,
+    "breakeven_10y": 3.9619629852242717,
+    "vix": 2.364724591604488
+  },
+  "reference_rows": 499,
+  "current_rows": 245,
+  "action": "investigate before promotion"
+}

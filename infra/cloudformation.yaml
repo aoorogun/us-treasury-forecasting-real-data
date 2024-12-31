@@ -1,0 +1,61 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Baseline AWS controls for Treasury forecasting on SageMaker
+
+Parameters:
+  Environment:
+    Type: String
+    Default: dev
+    AllowedValues: [dev, staging, prod]
+
+Resources:
+  DataBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault: {SSEAlgorithm: aws:kms}
+      VersioningConfiguration: {Status: Enabled}
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+  SageMakerRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal: {Service: sagemaker.amazonaws.com}
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: ArtifactAccess
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: [s3:GetObject, s3:PutObject, s3:ListBucket]
+                Resource: [!GetAtt DataBucket.Arn, !Sub "${DataBucket.Arn}/*"]
+              - Effect: Allow
+                Action: [cloudwatch:PutMetricData, logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents]
+                Resource: "*"
+
+  ForecastErrorAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      Namespace: TreasuryForecasting
+      MetricName: MAEBasisPoints
+      Statistic: Average
+      Period: 86400
+      EvaluationPeriods: 2
+      DatapointsToAlarm: 2
+      Threshold: 30
+      ComparisonOperator: GreaterThanThreshold
+      TreatMissingData: breaching
+
+Outputs:
+  DataBucketName: {Value: !Ref DataBucket}
+  SageMakerRoleArn: {Value: !GetAtt SageMakerRole.Arn}
+

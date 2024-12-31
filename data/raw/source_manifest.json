@@ -1,0 +1,55 @@
+{
+  "retrieved_at_utc": "2026-10-19T18:14:23.922271+00:00",
+  "snapshot_cutoff": "2024-12-31",
+  "provider": "Federal Reserve Bank of St. Louis FRED",
+  "series": {
+    "DGS3MO": {
+      "column": "treasury_3m",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DGS3MO&cosd=2004-01-01&coed=2024-12-31",
+      "rows": 5478,
+      "sha256": "f9f716db1efa5b4e113df41814cab4ebecaa8972f4d6082168bbec89bf766b05"
+    },
+    "DGS2": {
+      "column": "treasury_2y",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DGS2&cosd=2004-01-01&coed=2024-12-31",
+      "rows": 5478,
+      "sha256": "f314afd1c62d47762a4d69753ba16516716b66482b7c07d7c28d56abc7e87a9f"
+    },
+    "DGS10": {
+      "column": "treasury_10y",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DGS10&cosd=2004-01-01&coed=2024-12-31",
+      "rows": 5478,
+      "sha256": "31ef4ea360ef59aef27d0ae10e6a96add26908aa61b874d4b55285a00883b59a"
+    },
+    "DGS30": {
+      "column": "treasury_30y",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DGS30&cosd=2004-01-01&coed=2024-12-31",
+      "rows": 5478,
+      "sha256": "f22051cb91ed0b6fddda65844f974f51afb9cef8df782ed3be40fdcca4a5dbe9"
+    },
+    "DFF": {
+      "column": "fed_funds",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFF&cosd=2004-01-01&coed=2024-12-31",
+      "rows": 7671,
+      "sha256": "bfbd025e32a74f1c634eff35e4c77e8c72a6fe718100cf855477b591ddb4ab51"
+    },
+    "DFII10": {
+      "column": "real_yield_10y",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFII10&cosd=2004-01-01&coed=2024-12-31",
+      "rows": 5478,
+      "sha256": "f938c0c063ca7e7e31f29f618d67249267c1267e18a888bf4eeb67fce06f04ad"
+    },
+    "T10YIE": {
+      "column": "breakeven_10y",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=T10YIE&cosd=2004-01-01&coed=2024-12-31",
+      "rows": 5478,
+      "sha256": "b15ecfded5dcbf9ebf0c68c3d97a927b4204faf32b1a521536e427c5cb262f3e"
+    },
+    "VIXCLS": {
+      "column": "vix",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=VIXCLS&cosd=2004-01-01&coed=2024-12-31",
+      "rows": 5478,
+      "sha256": "a1b6bf2bfc869e4030797c51c27b91641c28647efb38653e45d4e4a7db5d226b"
+    }
+  }
+}

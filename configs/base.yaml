@@ -1,0 +1,54 @@
+project:
+  name: us-treasury-forecasting-real-data
+  version: "1.0.0"
+  seed: 42
+
+data:
+  start: "2004-01-01"
+  end: "2024-12-31"
+  holdout_start: "2024-01-01"
+  forecast_horizon_rows: 5
+  max_forward_fill_rows: 5
+  series:
+    DGS3MO: treasury_3m
+    DGS2: treasury_2y
+    DGS10: treasury_10y
+    DGS30: treasury_30y
+    DFF: fed_funds
+    DFII10: real_yield_10y
+    T10YIE: breakeven_10y
+    VIXCLS: vix
+
+paths:
+  raw_dir: data/raw
+  processed: data/processed/market_features.csv
+  artifact_dir: artifacts
+  report_dir: reports
+
+features:
+  market_columns:
+    - treasury_3m
+    - treasury_2y
+    - treasury_10y
+    - treasury_30y
+    - fed_funds
+    - real_yield_10y
+    - breakeven_10y
+    - vix
+  lags: [1, 2, 5, 10, 21, 63]
+  rolling_windows: [5, 10, 21, 63]
+
+training:
+  candidates: [ridge, random_forest, hist_gradient_boosting]
+  validation_folds: 4
+  validation_days: 126
+  interval_alpha: 0.1
+  regime_clusters: 4
+
+monitoring:
+  reference_start: "2022-01-01"
+  reference_end: "2023-12-31"
+  current_start: "2024-01-01"
+  psi_warning: 0.10
+  psi_critical: 0.25
+

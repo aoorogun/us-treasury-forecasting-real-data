@@ -1,0 +1,38 @@
+{
+  "scenario_id": "SCN-2024-RATES-100BP",
+  "status": "proposed",
+  "requested_as_of": "2024-12-31",
+  "feature_date": "2024-12-23",
+  "model_version": "1.0.0",
+  "baseline_yield_pct": 4.570631729091334,
+  "scenario_yield_pct": 5.079627515736113,
+  "delta_basis_points": 50.899578664477914,
+  "baseline_regime": 3,
+  "scenario_regime": 3,
+  "shocks": {
+    "treasury_3m": {
+      "operation": "add",
+      "value": 1.0
+    },
+    "treasury_2y": {
+      "operation": "add",
+      "value": 1.0
+    },
+    "treasury_10y": {
+      "operation": "add",
+      "value": 1.0
+    },
+    "treasury_30y": {
+      "operation": "add",
+      "value": 1.0
+    },
+    "fed_funds": {
+      "operation": "add",
+      "value": 0.75
+    },
+    "vix": {
+      "operation": "multiply",
+      "value": 1.25
+    }
+  }
+}
